@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd  
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+    
+    <!-- 将properties文件夹下的config配置文件注入到spring中 -->
+    <!-- classpath和classpath*区别：classpath只是到制定目录中找，而*则是到所有依赖的jar中找对应的目录 -->
+    <!-- system-properties-mode定义PropertyPlaceholderConfigurer的使用版本，其实本质上差别不大。都是将config中的文件已kv的形式交付给spring -->
+   	<context:property-placeholder location="classpath:properties/config.properties" system-properties-mode="ENVIRONMENT"/>
+   	
+    <!-- 配置包扫描器，扫描@Controller注解的类 -->  
+    <context:component-scan base-package="org.web.blog.controller"/> 
+    
+<!--     <import resource="dubbo.xml"/>
+   	<import resource="dubbo_consumer.xml"/> -->
+    
+</beans>  
